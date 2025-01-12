@@ -7,25 +7,25 @@ const user=document.querySelector("#user");
 const comp=document.querySelector("#comp");
 
 const computer=()=>{
-    const option=["rock","paper","sci"];
+    const option=["rock","paper","scissors"];
     const random=Math.floor(Math.random()*3);
     
     return option[random];
     
 }
-const winner=(userwin)=>{
+const winner=(userwin,cid,compchoice)=>{
     if(userwin){
         userScore++;
         user.innerText=userScore;
         console.log("you win");
-        msg.innerText="you win";
+        msg.innerText=`Your ${cid} beats ${compchoice}`;
         msg.style.backgroundColor="green";
     }
     else{
         computerScore++;
         comp.innerText=computerScore;
         console.log("computer wins");
-        msg.innerText="you lose";
+        msg.innerText=` ${compchoice} beats your ${cid}`;
         msg.style.backgroundColor="red";
     }
 }
@@ -48,12 +48,12 @@ const game=(cid)=>{
             userwin=compchoice==="paper" ? false : true;
         }
         else if (cid==="paper"){
-            userwin=compchoice==="sci" ? false : true;
+            userwin=compchoice==="scissors" ? false : true;
         }
-        else if (cid==="sci"){
+        else if (cid==="scissors"){
             userwin=compchoice==="rock" ? false : true;
         }
-        winner(userwin);
+        winner(userwin,cid , compchoice);
     }
 }
 
